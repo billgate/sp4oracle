@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.domain.BoardVO;
 
 @Controller
@@ -17,6 +18,17 @@ public class BoardController {
   @RequestMapping(value = "/register", method = RequestMethod.GET)
   public void registerGET(BoardVO vo, Model model) throws Exception {
       logger.info("register get..........");
+  }
+  
+  @RequestMapping(value = "/register", method = RequestMethod.POST)
+  public String registerPOST(BoardVO vo, RedirectAttributes model) throws Exception {
+      logger.info("register post...........");
+      logger.info(vo.toString());
+
+      //service.regist(vo);
+
+      model.addFlashAttribute("msg", "success");
+      return "redirect:/board/listAll";
   }
 	
 }
