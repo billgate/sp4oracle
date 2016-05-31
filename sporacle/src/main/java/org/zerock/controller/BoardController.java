@@ -25,8 +25,6 @@ public class BoardController {
       logger.info("register post...........");
       logger.info(vo.toString());
 
-      //service.regist(vo);
-
       model.addFlashAttribute("msg", "success");
       return "redirect:/board/listAll";
   }
